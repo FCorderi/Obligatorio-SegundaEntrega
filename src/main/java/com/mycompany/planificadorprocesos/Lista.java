@@ -17,20 +17,9 @@ public class Lista<Proceso> implements ILista<Proceso> {
         primero = null;
     }
 
-    // implementar los metodos indicados en la interfaz
-    public void bajarPrioridades() {
-        Nodo<Proceso> actual = primero;
-        if (actual.getDato().Prioridad > 1) {
-            actual.getDato().Prioridad--;
-        }
-        while (actual.getSiguiente() != null) {
-            actual = actual.getSiguiente();
-            if (actual.getDato().Prioridad > 1) {
-                actual.getDato().Prioridad--;
-            }
-        }
-    }
-
+    /*
+    * "Bloquea" el proceso ingresado por parametro ingresandolo a la cola de bloqueados y eliminandolo de la cola ingresada por parametro
+    */
     public void bloquear(Nodo<Proceso> p, Lista<Proceso> lista) {
         p.getDato().bloqueado = true;
         Nodo<Proceso> nodo = new Nodo(p.getDato().ID, p.getDato());
@@ -38,6 +27,11 @@ public class Lista<Proceso> implements ILista<Proceso> {
         lista.eliminar(p.getDato().ID);
     }
 
+    /*
+    * Recorre la lista de procesos bloqueados bajandole 1 a la duracion restante de la ES hasta llegar a 0.
+    * Cuando esta llega a 0 vuelve a cambiarle los datos de duracion de ES y el tiempo entre ES a sus valorres iniciales,
+    * luego desbloquea el proceso eliminandolo de cola de bloqueados e ingresandolo ordenadamente a la cola pasada por parametro.
+    */
     public void contadorDesbloqueoOrdenado(Lista<Proceso> lista, long[] vTEntreES, long[] vDuracionES) {
         Nodo<Proceso> aux = null;
         Nodo<Proceso> sig = null;
@@ -63,6 +57,11 @@ public class Lista<Proceso> implements ILista<Proceso> {
 
     }
 
+    /*
+    * Recorre la lista de procesos bloqueados bajandole 1 a la duracion restante de la ES hasta llegar a 0.
+    * Cuando esta llega a 0 vuelve a cambiarle los datos de duracion de ES y el tiempo entre ES a sus valorres iniciales,
+    * luego desbloquea el proceso eliminandolo de cola de bloqueados e ingresandolo a la cola pasada por parametro.
+    */
     public void contadorDesbloqueoDesordenado(Lista<Proceso> lista, long[] vTEntreES, long[] vDuracionES) {
         Nodo<Proceso> aux = null;
         Nodo<Proceso> sig = null;
@@ -89,8 +88,6 @@ public class Lista<Proceso> implements ILista<Proceso> {
 
     @Override
     public void insertar(Nodo<Proceso> nodo) {
-
-        //nodo.setSiguiente(null);
         if (esVacia()) {
             primero = nodo;
 

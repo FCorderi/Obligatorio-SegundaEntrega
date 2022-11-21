@@ -14,18 +14,19 @@ public class Planificadores {
     Lista<Proceso> listaP2;
     Lista<Proceso> listaP3;
     Lista<Proceso> listaP4;
+    
     long Quantum;
+    
     Lista<Proceso> ProcesosFinalizados = new Lista();
     Lista<Proceso> ProcesosBloqueados = new Lista();
+    
     long[] TEntreES1;
-
     long[] DuracionES1;
 
-//    Lista<Proceso> copiaLista1 = new Lista();
-//    Lista<Proceso> copiaLista2 = new Lista();
-//    Lista<Proceso> copiaLista3 = new Lista();
-//    Lista<Proceso> copiaLista4 = new Lista();
-
+    /*
+    * Constructor de la clase planificadores
+    * inicializa los datos y crea una copia de los tiempos entre ES y las duraciones de las ES de cada cola, para poder reiniciarlos mas tarde
+    */
     public Planificadores(long quantum, Lista<Proceso> lista1, Lista<Proceso> lista2, Lista<Proceso> lista3, Lista<Proceso> lista4, Lista<Proceso> procesosFinalizados, Lista<Proceso> procesosBloqueados) {
         listaP1 = lista1;
         listaP2 = lista2;
@@ -41,12 +42,6 @@ public class Planificadores {
         copiarTEntreES(TEntreES1, listaP1);
 
         copiarDuracionES(DuracionES1, listaP1);
-
-
-//        copiaLista1 = copiarLista(listaP1);
-//        copiaLista2 = copiarLista(listaP2);
-//        copiaLista3 = copiarLista(listaP3);
-//        copiaLista4 = copiarLista(listaP4);
     }
 
     int contadorEnvejecimiento = 0;
@@ -57,6 +52,9 @@ public class Planificadores {
 
     long quantumCounter = Quantum;
 
+    /*
+    * Recorre la lista de procesos copiando todos los tiempos entre ES al array ingresado como parametro
+    */
     private void copiarTEntreES(long[] valores, Lista<Proceso> lista) {
 
         Nodo<Proceso> actual = lista.getPrimero();
@@ -66,6 +64,9 @@ public class Planificadores {
         }
     }
 
+    /*
+    * Recorre la lista de procesos copiando todos las duraciones de ES al array ingresado como parametro
+    */
     private void copiarDuracionES(long[] valores, Lista<Proceso> lista) {
 
         Nodo<Proceso> actual = lista.getPrimero();
@@ -139,12 +140,6 @@ public class Planificadores {
                     ProcesosBloqueados.insertar(nodo);
                     listaP.eliminar(p.ID);
                 }
-
-//                contadorEnvejecimiento++;
-//                if (contadorEnvejecimiento == 2) {
-//                    contadorEnvejecimiento = 0;
-//                    listaP.bajarPrioridades();
-//                }
             }
 
             return p;

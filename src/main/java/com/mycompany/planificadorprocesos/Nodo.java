@@ -46,12 +46,6 @@ public class Nodo<T> implements INodo<T>{
         return new Nodo<>(this.etiqueta, this.dato);
     }
 
-    /**
-     *
-     * @param unNodo
-     * @return
-     */
-
     public boolean equals(Nodo unNodo) {
         return this.dato.equals(unNodo.getDato());
     }

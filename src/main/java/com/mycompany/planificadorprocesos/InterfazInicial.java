@@ -236,6 +236,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    * Crea un proceso con los datos generados aleatoriamente para luego devolverlo.
+    */
     private Proceso CrearProcesoRandom() {
         String[] tipos = {"SO", "Usuario","Batch"};
         String tipo = tipos[(int) (Math.random() * 3) ];
@@ -250,6 +253,9 @@ public class InterfazInicial extends javax.swing.JFrame {
         return proceso;
     }
     
+    /*
+    * Crea un proceso con los datos ingresados en la interfaz para luego devolverlo.
+    */
     private Proceso CrearProceso() {
         String tipo = tipoProceso.getItemAt(tipoProceso.getSelectedIndex());
         long duracion = Integer.parseInt(duracionProceso.getValue().toString());
@@ -262,6 +268,11 @@ public class InterfazInicial extends javax.swing.JFrame {
 
         return proceso;
     }
+    
+    /*
+    * Agrega los procesos, creados con los datos de la interfaz, a la tabla de la interfaz para que se vayan mostrando, 
+    * luego los ingresa en las colas segun el tipo de proceso que sea.
+    */
     private void botonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirActionPerformed
         Proceso proceso = CrearProceso();
         DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
@@ -301,6 +312,10 @@ public class InterfazInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonAñadirVariosActionPerformed
 
+    /*
+    * Agrega los procesos, creados con los datos aleatorios, a la tabla de la interfaz para que se vayan mostrando, 
+    * luego los ingresa en las colas segun el tipo de proceso que sea.
+    */
     private void botonAñadirProcesoRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirProcesoRandomActionPerformed
         Proceso proceso = CrearProcesoRandom();
         DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
