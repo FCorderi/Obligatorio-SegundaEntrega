@@ -14,19 +14,19 @@ public class Planificadores {
     Lista<Proceso> listaP2;
     Lista<Proceso> listaP3;
     Lista<Proceso> listaP4;
-    
+
     long Quantum;
-    
+
     Lista<Proceso> ProcesosFinalizados = new Lista();
     Lista<Proceso> ProcesosBloqueados = new Lista();
-    
+
     long[] TEntreES1;
     long[] DuracionES1;
 
     /*
     * Constructor de la clase planificadores
     * inicializa los datos y crea una copia de los tiempos entre ES y las duraciones de las ES de cada cola, para poder reiniciarlos mas tarde
-    */
+     */
     public Planificadores(long quantum, Lista<Proceso> lista1, Lista<Proceso> lista2, Lista<Proceso> lista3, Lista<Proceso> lista4, Lista<Proceso> procesosFinalizados, Lista<Proceso> procesosBloqueados) {
         listaP1 = lista1;
         listaP2 = lista2;
@@ -54,7 +54,7 @@ public class Planificadores {
 
     /*
     * Recorre la lista de procesos copiando todos los tiempos entre ES al array ingresado como parametro
-    */
+     */
     private void copiarTEntreES(long[] valores, Lista<Proceso> lista) {
 
         Nodo<Proceso> actual = lista.getPrimero();
@@ -66,7 +66,7 @@ public class Planificadores {
 
     /*
     * Recorre la lista de procesos copiando todos las duraciones de ES al array ingresado como parametro
-    */
+     */
     private void copiarDuracionES(long[] valores, Lista<Proceso> lista) {
 
         Nodo<Proceso> actual = lista.getPrimero();
@@ -76,16 +76,19 @@ public class Planificadores {
         }
     }
 
-    public Proceso roundRobin(Lista<Proceso> listaP, int n) {
+    /*
+    * Primero baja uno la duracion de los bloqueados, luego al primero de la cola de listos le baja en uno la duracion y el tiempo entre ES.
+    * Despues se fija si termino el proceso, si el tiempo entre ES se termino o si el quantum llego a 0, hace lo que tenga que hacer con ese proceso,
+    * baja en uno el contador del quantum y sale.
+    * Esta hecho para ser llamado cada una unidad de tiempo.
+     */
+    public Proceso roundRobin(Lista<Proceso> listaP) {
         long[] vTEntreES;
         long[] vDuacionES;
-        if (n == 2) {
-            vTEntreES = TEntreES1;
-            vDuacionES = DuracionES1;
-        } else {
-            vTEntreES = TEntreES1;
-            vDuacionES = DuracionES1;
-        }
+
+        vTEntreES = TEntreES1;
+        vDuacionES = DuracionES1;
+
         ProcesosBloqueados.contadorDesbloqueoDesordenado(listaP, vTEntreES, vDuacionES);
         if (!listaP.esVacia()) {
             Proceso p = listaP.getPrimero().getDato();
@@ -118,6 +121,11 @@ public class Planificadores {
         return null;
     }
 
+    /*
+    * Primero baja uno la duracion de los bloqueados, luego al primero de la cola de listos le baja en uno la duracion y el tiempo entre ES.
+    * Despues se fija si termino el proceso o si el tiempo entre ES se termino,hace lo que tenga que hacer con ese proceso y sale.
+    * Esta hecho para ser llamado cada una unidad de tiempo.
+    */
     public Proceso evenDriven(Lista<Proceso> listaP) {
         ProcesosBloqueados.contadorDesbloqueoOrdenado(listaP, TEntreES1, DuracionES1);
         if (!listaP.esVacia()) {
@@ -146,7 +154,11 @@ public class Planificadores {
         }
         return null;
     }
-
+    /*
+    * Primero baja uno la duracion de los bloqueados, luego al primero de la cola de listos le baja en uno la duracion y el tiempo entre ES.
+    * Despues se fija si termino el proceso o si el tiempo entre ES se termino,hace lo que tenga que hacer con ese proceso y sale.
+    * Esta hecho para ser llamado cada una unidad de tiempo.
+    */
     public Proceso firstComeFirstServed(Lista<Proceso> listaP) {
         ProcesosBloqueados.contadorDesbloqueoDesordenado(listaP, TEntreES1, DuracionES1);
         if (!listaP.esVacia()) {

@@ -50,6 +50,8 @@ public class InterfazInicial extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         botonAñadirVarios = new javax.swing.JButton();
         botonAñadirProcesoRandom = new javax.swing.JToggleButton();
+        jLabel10 = new javax.swing.JLabel();
+        cantProcAleatorios = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,12 +125,16 @@ public class InterfazInicial extends javax.swing.JFrame {
             }
         });
 
-        botonAñadirProcesoRandom.setText("Añadir proceso aleatorio");
+        botonAñadirProcesoRandom.setText("Añadir procesos aleatorio");
         botonAñadirProcesoRandom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAñadirProcesoRandomActionPerformed(evt);
             }
         });
+
+        jLabel10.setText("Cant. Proc");
+
+        cantProcAleatorios.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,14 +144,11 @@ public class InterfazInicial extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addGap(79, 79, 79))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonAñadir)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonAñadirVarios)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonAñadirProcesoRandom))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tipoProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,28 +175,37 @@ public class InterfazInicial extends javax.swing.JFrame {
                                         .addComponent(tEsperaES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(prioridadProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel7))
+                                        .addComponent(prioridadProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)))
-                        .addGap(146, 146, 146))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
-                        .addGap(79, 79, 79))))
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonAñadir)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAñadirVarios)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonAñadirProcesoRandom)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cantProcAleatorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(quantum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(botonIniciar))
-                    .addComponent(jLabel8)))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +233,9 @@ public class InterfazInicial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAñadir)
                     .addComponent(botonAñadirVarios)
-                    .addComponent(botonAñadirProcesoRandom))
+                    .addComponent(botonAñadirProcesoRandom)
+                    .addComponent(jLabel10)
+                    .addComponent(cantProcAleatorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,24 +252,24 @@ public class InterfazInicial extends javax.swing.JFrame {
 
     /*
     * Crea un proceso con los datos generados aleatoriamente para luego devolverlo.
-    */
+     */
     private Proceso CrearProcesoRandom() {
-        String[] tipos = {"SO", "Usuario","Batch"};
-        String tipo = tipos[(int) (Math.random() * 3) ];
-        long duracion = (long)(Math.random()*10) +1;
-        long tiempoEntreES = (long)(Math.random()*10);
-        long duracionES = (long)(Math.random()*10);
-        int prioridad = (int)(Math.random()*99) +1;
+        String[] tipos = {"SO", "Usuario", "Batch"};
+        String tipo = tipos[(int) (Math.random() * 3)];
+        long duracion = (long) (Math.random() * 10) + 1;
+        long tiempoEntreES = (long) (Math.random() * 10);
+        long duracionES = (long) (Math.random() * 10);
+        int prioridad = (int) (Math.random() * 99) + 1;
         idProceso++;
 
         Proceso proceso = new Proceso(idProceso, tipo, duracion, tiempoEntreES, duracionES, prioridad);
 
         return proceso;
     }
-    
+
     /*
     * Crea un proceso con los datos ingresados en la interfaz para luego devolverlo.
-    */
+     */
     private Proceso CrearProceso() {
         String tipo = tipoProceso.getItemAt(tipoProceso.getSelectedIndex());
         long duracion = Integer.parseInt(duracionProceso.getValue().toString());
@@ -268,11 +282,11 @@ public class InterfazInicial extends javax.swing.JFrame {
 
         return proceso;
     }
-    
+
     /*
     * Agrega los procesos, creados con los datos de la interfaz, a la tabla de la interfaz para que se vayan mostrando, 
-    * luego los ingresa en las colas segun el tipo de proceso que sea.
-    */
+    * luego los ingresa en las colas segun el tipo de proceso que sea y en orden correspondiente.
+     */
     private void botonAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirActionPerformed
         Proceso proceso = CrearProceso();
         DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
@@ -297,47 +311,87 @@ public class InterfazInicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonAñadirActionPerformed
 
+    /*
+    * Crea una nueva interfaz informacion con sus respectivos parametros y a la vez la hace visible,
+    * luego cambia la visibilidad de esta interfaz.
+     */
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         Quantum = Integer.parseInt(quantum.getValue().toString());
         new InterfazInformacion(Quantum, colaProcesos1, colaProcesos2, colaProcesos3, colaProcesos4).setVisible(true);
         this.setVisible(false);
-        //interfaz.loop();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
     private void tipoProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoProcesoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tipoProcesoActionPerformed
 
+    /*
+    * Lee el archivo ListaProcesos.txt, del cual toma los valores para crear los procesos necesarios.
+    * Los valores dentro del txt deben ser, por cada proceso una linea, cada dato separado por ";",
+    * el orden de los datos es tipo;duracion;tEntreES;duracionES;prioridad
+    * Agrega los procesos a la tabla de la interfaz para que se muestren, 
+    * luego los ingresa en las colas segun el tipo de proceso que sea y en orden correspondiente.
+     */
     private void botonAñadirVariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirVariosActionPerformed
-        // TODO add your handling code here:
+        ManejadorArchivosGenerico manejador = new ManejadorArchivosGenerico();
+        String[] lineas = manejador.leerArchivo("/Users/felipe/Documents/SO/Obligatorio-SegundaEntrega/src/main/java/com/mycompany/planificadorprocesos/ListaProcesos.txt", false);
+        for (int i = 0; i < lineas.length; i++) {
+            String[] sproceso = lineas[i].split(";");
+            idProceso++;
+            Proceso proceso = new Proceso(idProceso, sproceso[0], Long.parseLong(sproceso[1]), Long.parseLong(sproceso[2]), Long.parseLong(sproceso[3]), Integer.parseInt(sproceso[4]));
+
+            DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
+            String[] datos = {
+                String.valueOf(proceso.ID),
+                proceso.Tipo,
+                String.valueOf(proceso.Duracion),
+                String.valueOf(proceso.TEntreES),
+                String.valueOf(proceso.DuracionES),
+                String.valueOf(proceso.Prioridad),};
+            dt.addRow(datos);
+
+            Nodo nodo = new Nodo(proceso.ID, proceso);
+            if (proceso.Tipo.equals("SO")) {
+                colaProcesos1.insertarOrdenado(nodo);
+            } else if (proceso.Tipo.equals("Batch")) {
+                colaProcesos4.insertarOrdenado(nodo);
+            } else if (proceso.TEntreES > proceso.DuracionES) {
+                colaProcesos2.insertarOrdenado(nodo);
+            } else {
+                colaProcesos3.insertarOrdenado(nodo);
+            }
+        }
     }//GEN-LAST:event_botonAñadirVariosActionPerformed
 
     /*
-    * Agrega los procesos, creados con los datos aleatorios, a la tabla de la interfaz para que se vayan mostrando, 
-    * luego los ingresa en las colas segun el tipo de proceso que sea.
-    */
+    * Agrega la cantidad ingresada en la interfaz de procesos, creados con los datos aleatorios, a la tabla de la interfaz para que se vayan mostrando, 
+    * luego los ingresa en las colas segun el tipo de proceso que sea y en orden correspondiente.
+     */
     private void botonAñadirProcesoRandomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirProcesoRandomActionPerformed
-        Proceso proceso = CrearProcesoRandom();
-        DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
-        String[] datos = {
-            String.valueOf(proceso.ID),
-            proceso.Tipo,
-            String.valueOf(proceso.Duracion),
-            String.valueOf(proceso.TEntreES),
-            String.valueOf(proceso.DuracionES),
-            String.valueOf(proceso.Prioridad),};
-        dt.addRow(datos);
+        for(int i = 0 ; i < Integer.parseInt(cantProcAleatorios.getValue().toString()) ; i++){
+            Proceso proceso = CrearProcesoRandom();
+            DefaultTableModel dt = (DefaultTableModel) tablaProcesos.getModel();
+            String[] datos = {
+                String.valueOf(proceso.ID),
+                proceso.Tipo,
+                String.valueOf(proceso.Duracion),
+                String.valueOf(proceso.TEntreES),
+                String.valueOf(proceso.DuracionES),
+                String.valueOf(proceso.Prioridad),};
+            dt.addRow(datos);
 
-        Nodo nodo = new Nodo(proceso.ID, proceso);
-        if (proceso.Tipo.equals("SO")) {
-            colaProcesos1.insertarOrdenado(nodo);
-        } else if (proceso.Tipo.equals("Batch")) {
-            colaProcesos4.insertarOrdenado(nodo);
-        } else if (proceso.TEntreES > proceso.DuracionES) {
-            colaProcesos2.insertarOrdenado(nodo);
-        } else {
-            colaProcesos3.insertarOrdenado(nodo);
+            Nodo nodo = new Nodo(proceso.ID, proceso);
+            if (proceso.Tipo.equals("SO")) {
+                colaProcesos1.insertarOrdenado(nodo);
+            } else if (proceso.Tipo.equals("Batch")) {
+                colaProcesos4.insertarOrdenado(nodo);
+            } else if (proceso.TEntreES > proceso.DuracionES) {
+                colaProcesos2.insertarOrdenado(nodo);
+            } else {
+                colaProcesos3.insertarOrdenado(nodo);
+            }
         }
+        
     }//GEN-LAST:event_botonAñadirProcesoRandomActionPerformed
 
     /**
@@ -386,8 +440,10 @@ public class InterfazInicial extends javax.swing.JFrame {
     private javax.swing.JToggleButton botonAñadirProcesoRandom;
     private javax.swing.JButton botonAñadirVarios;
     private javax.swing.JButton botonIniciar;
+    private javax.swing.JSpinner cantProcAleatorios;
     private javax.swing.JSpinner duracionProceso;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

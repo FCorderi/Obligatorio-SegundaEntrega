@@ -2,8 +2,6 @@ package com.mycompany.planificadorprocesos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -287,10 +285,21 @@ public class InterfazInformacion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_procesoTRESActionPerformed
 
+    /*
+    * Metodo principal de toda la planificacion, se fija que cola ejecutarr, actualiza toda la informacion de la interfaz, ejecuta el planificador 
+    * indicado segun el tipo de cola y cuando termina con los procesos de la cola limpia las tablas de la interfaz para pasar a la siguiente cola.
+    */
     public void loop(Planificadores planificador) {
-        ;
-
+        
+        /*
+        * Cola 1
+        * Parte inicial de deteccion de cola a ejecutar y ejecucion del planificador.
+        */
+        
         if (colaEnTrabajo == 0) {
+            /*
+            * Se fija si la cola de listos y la cola de bloqueados estan vacia para pasar a la siguiente cola.
+            */
             colaEjecucion.setText("Cola 1 (procesos del sistema)");
             if (listaP1.esVacia() && procesosBloqueados.esVacia()) {
                 colaEnTrabajo++;
@@ -300,6 +309,7 @@ public class InterfazInformacion extends javax.swing.JFrame {
                     dt2.removeRow(i);
                 }
             }
+            
             Proceso p = planificador.evenDriven(listaP1);
             if (p != null) {
                 procesoEjecucionId.setText(String.valueOf(p.ID));
@@ -311,6 +321,10 @@ public class InterfazInformacion extends javax.swing.JFrame {
                 }
             }
 
+            /*
+            * Parte secundaria, limpieza de las tablas de la interfaz para la siguiente cola.
+            */
+            
             Nodo<Proceso> actual = listaP1.getPrimero();
             DefaultTableModel dt1 = (DefaultTableModel) tablaListos.getModel();
             int filas = dt1.getRowCount();
@@ -373,11 +387,21 @@ public class InterfazInformacion extends javax.swing.JFrame {
                 }
             }
 
-        } //-----------------------------------------------------------------------------------------------------
+        } 
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        
+        /*
+        * Cola 2
+        * Parte inicial de deteccion de cola a ejecutar y ejecucion del planificador.
+        */
+        
         if (colaEnTrabajo == 1) {
+            /*
+            * Se fija si la cola de listos y la cola de bloqueados estan vacia para pasar a la siguiente cola.
+            */
             colaEjecucion.setText("Cola 2 (procesos de usuario B/CPU)");
             if (listaP2.esVacia() && procesosBloqueados.esVacia()) {
                 colaEnTrabajo++;
@@ -388,7 +412,7 @@ public class InterfazInformacion extends javax.swing.JFrame {
                 }
             }
 
-            Proceso pRR = planificador.roundRobin(listaP2, 2);
+            Proceso pRR = planificador.roundRobin(listaP2);
             if (pRR != null) {
                 procesoEjecucionId.setText(String.valueOf(pRR.ID));
                 procesoTR.setText(String.valueOf(pRR.Duracion));
@@ -398,6 +422,10 @@ public class InterfazInformacion extends javax.swing.JFrame {
                     procesoTRES.setText("0");
                 }
             }
+
+            /*
+            * Parte secundaria, limpieza de las tablas de la interfaz para la siguiente cola
+            */
 
             Nodo<Proceso> actualRR = listaP2.getPrimero();
             DefaultTableModel dtRR = (DefaultTableModel) tablaListos.getModel();
@@ -465,7 +493,14 @@ public class InterfazInformacion extends javax.swing.JFrame {
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
+        /*
+        * Cola 3
+        * Parte inicial de deteccion de cola a ejecutar y ejecucion del planificador.
+        */
         if (colaEnTrabajo == 2) {
+            /*
+            * Se fija si la cola de listos y la cola de bloqueados estan vacia para pasar a la siguiente cola.
+            */
             colaEjecucion.setText("Cola 3 (procesos de usuario B/ES)");
             if (listaP3.esVacia() && procesosBloqueados.esVacia()) {
                 colaEnTrabajo++;
@@ -475,7 +510,7 @@ public class InterfazInformacion extends javax.swing.JFrame {
                     dt2.removeRow(i);
                 }
             }
-            Proceso pRR2 = planificador.roundRobin(listaP3, 3);
+            Proceso pRR2 = planificador.roundRobin(listaP3);
             if (pRR2 != null) {
                 procesoEjecucionId.setText(String.valueOf(pRR2.ID));
                 procesoTR.setText(String.valueOf(pRR2.Duracion));
@@ -485,6 +520,10 @@ public class InterfazInformacion extends javax.swing.JFrame {
                     procesoTRES.setText("0");
                 }
             }
+
+            /*
+            * Parte secundaria, limpieza de las tablas de la interfaz para la siguiente cola
+            */
 
             Nodo<Proceso> actualRR2 = listaP3.getPrimero();
             DefaultTableModel dtRR2 = (DefaultTableModel) tablaListos.getModel();
@@ -548,11 +587,19 @@ public class InterfazInformacion extends javax.swing.JFrame {
                 }
             }
 
-        } //-----------------------------------------------------------------------------------------------------
+        } 
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------
+        /*
+        * Cola 4
+        * Parte inicial de deteccion de cola a ejecutar y ejecucion del planificador.
+        */
         if (colaEnTrabajo == 3) {
+            /*
+            * Se fija si la cola de listos y la cola de bloqueados estan vacia para pasar a la siguiente cola.
+            */
             if (listaP4.esVacia() && procesosBloqueados.esVacia()) {
                 colaEjecucion.setText("Cola 4 (procesos Batch)");
                 colaEnTrabajo = 0;
@@ -574,6 +621,10 @@ public class InterfazInformacion extends javax.swing.JFrame {
                 }
             }
 
+            /*
+            * Parte secundaria, limpieza de las tablas de la interfaz para la siguiente cola
+            */
+            
             Nodo<Proceso> actualf = listaP4.getPrimero();
             DefaultTableModel dtf = (DefaultTableModel) tablaListos.getModel();
             int filasff = dtf.getRowCount();
