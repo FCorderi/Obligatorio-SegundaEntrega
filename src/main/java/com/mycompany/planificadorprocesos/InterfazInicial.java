@@ -334,7 +334,7 @@ public class InterfazInicial extends javax.swing.JFrame {
      */
     private void botonAñadirVariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAñadirVariosActionPerformed
         ManejadorArchivosGenerico manejador = new ManejadorArchivosGenerico();
-        String[] lineas = manejador.leerArchivo("/Users/felipe/Documents/SO/Obligatorio-SegundaEntrega/src/main/java/com/mycompany/planificadorprocesos/ListaProcesos.txt", false);
+        String[] lineas = manejador.leerArchivo("./src/main/java/com/mycompany/planificadorprocesos/ListaProcesos.txt", false);
         for (int i = 0; i < lineas.length; i++) {
             String[] sproceso = lineas[i].split(";");
             idProceso++;
